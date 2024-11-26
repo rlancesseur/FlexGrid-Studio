@@ -30,6 +30,7 @@ const selectFormatWidth = document.querySelector("#selectFormatWidth")
 const inputHeight = document.querySelector("#inputHeight")
 const selectFormatHeight = document.querySelector("#selectFormatHeight")
 
+// Si choix du thème en mémoire, l'exécute 
 let themeEnregistre = localStorage.getItem("theme")
 let imgEnregistre = localStorage.getItem("img")
 if(themeEnregistre) {
@@ -37,6 +38,7 @@ if(themeEnregistre) {
     btnDarkLight.src = imgEnregistre
 }
 
+// Change le thème et garde le choix en mémoire
 btnDarkLight.addEventListener("click", () => {
     if (body.classList.contains("dark")) {
         body.classList.remove("dark")
@@ -55,7 +57,8 @@ btnDarkLight.addEventListener("click", () => {
 
 })
 
-selectDisplay.addEventListener("click", () => {
+// Permet de choisir le display
+selectDisplay.addEventListener("change", () => {
     if (selectDisplay.value === "grid") {
         main.style.display = "grid"
         containerFlexDirection.style.display = "none"
@@ -75,7 +78,8 @@ selectDisplay.addEventListener("click", () => {
     }
 })
 
-selectFlexDirection.addEventListener("click", () => {
+// Permet de choisir le Flex Direction
+selectFlexDirection.addEventListener("change", () => {
     if (selectFlexDirection.value === "row") {
         main.style.flexDirection = "row"
     }
@@ -90,7 +94,8 @@ selectFlexDirection.addEventListener("click", () => {
     }
 })
 
-selectJustifyContent.addEventListener("click", () => {
+// Permet de choisir le Justify Content
+selectJustifyContent.addEventListener("change", () => {
     if (selectJustifyContent.value === "start") {
         main.style.justifyContent = "start"
     }
@@ -111,7 +116,8 @@ selectJustifyContent.addEventListener("click", () => {
     }
 })
 
-selectAlignItems.addEventListener("click", () => {
+// Permet de choisir l'Align-items
+selectAlignItems.addEventListener("change", () => {
     if (selectAlignItems.value === "start") {
         main.style.alignItems = "start"
     }
@@ -123,7 +129,8 @@ selectAlignItems.addEventListener("click", () => {
     }
 })
 
-selectflexWrap.addEventListener("click", () => {
+// Permet de choisir le Flew Wrap
+selectflexWrap.addEventListener("change", () => {
     if (selectflexWrap.value === "wrap") {
         main.style.flexWrap = "wrap"
     }
@@ -135,14 +142,17 @@ selectflexWrap.addEventListener("click", () => {
     }
 })
 
+// Permet de choisir la taille du Gap
 zoneTailleGap.addEventListener("change", () => {
     main.style.gap = zoneTailleGap.value + "" + selectFormatGap.value
 })
 
-selectFormatGap.addEventListener("click", () => {
+// Permet de choisir le format du Gap
+selectFormatGap.addEventListener("change", () => {
     main.style.gap = zoneTailleGap.value + "" + selectFormatGap.value
 })
 
+// Permet de créer un élément dans le conteneur
 let i = 2
 
 btnAjout.addEventListener("click", () => {
@@ -153,6 +163,7 @@ btnAjout.addEventListener("click", () => {
     i++
 })
 
+// Permet de supprimer un élément du conteneur
 btnSuppr.addEventListener("click", () => {
     if(main.children.length > 1) {
         main.removeChild(main.lastChild)
@@ -160,6 +171,7 @@ btnSuppr.addEventListener("click", () => {
     }
 })
 
+// Permet de tout reset
 btnReset.addEventListener("click", () => {
     if(selectDisplay.value = "grid") {
         main.style.display = "flex"
@@ -189,10 +201,12 @@ btnReset.addEventListener("click", () => {
     i = 2
 })
 
+// Permet de choisir le grid-template-columns
 zoneTemplateColumns.addEventListener("change", () => {
     main.style.gridTemplateColumns = zoneTemplateColumns.value
 })
 
+// Permet de choisir le grid-template-rows
 zoneTemplateRows.addEventListener("change", () => {
     main.style.gridTemplateRows = zoneTemplateRows.value
 })
