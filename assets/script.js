@@ -23,23 +23,7 @@ const zoneTemplateColumns = document.querySelector("#inputTemplateColumns")
 const zoneTemplateRows = document.querySelector("#inputTemplateRows")
 const zoneTailleGap = document.querySelector("#inputTailleGap")
 const selectFormatGap = document.querySelector("#selectFormatGap")
-
-
 const options = document.querySelectorAll("option")
-let valeur = []
-for(let i = 0; i < options.length; i++) {
-    valeur[i] = options[i]
-}
-
-// A CONTINUER !!
-// const selectCorrespond = (select) => {
-//     for(let i = 0; i < options.length; i++) {
-//         if select = valeur[i].value {
-
-//         }
-//     }
-// }
-
 
 // Si choix du thème en mémoire, l'exécute 
 let themeEnregistre = localStorage.getItem("theme")
@@ -65,7 +49,6 @@ btnDarkLight.addEventListener("click", () => {
         btnDarkLight.src = "assets/img/lightMode.png"
         localStorage.setItem("img", "assets/img/lightMode.png")
     }
-
 })
 
 // Permet de choisir le display
@@ -91,65 +74,37 @@ selectDisplay.addEventListener("change", () => {
 
 // Permet de choisir le Flex Direction
 selectFlexDirection.addEventListener("change", () => {
-    if (selectFlexDirection.value === "row") {
-        main.style.flexDirection = "row"
-    }
-    else if (selectFlexDirection.value === "rowReverse") {
-        main.style.flexDirection = "row-reverse"
-    }
-    else if (selectFlexDirection.value === "column") {
-        main.style.flexDirection = "column"
-    }
-    else {
-        main.style.flexDirection = "column-reverse"
+    for(let i = 0; i < options.length; i++){
+        if (selectFlexDirection.value === options[i].value) {
+            main.style.flexDirection = options[i].value
+        }
     }
 })
 
 // Permet de choisir le Justify Content
 selectJustifyContent.addEventListener("change", () => {
-    if (selectJustifyContent.value === "start") {
-        main.style.justifyContent = "start"
-    }
-    else if (selectJustifyContent.value === "end") {
-        main.style.justifyContent = "end"
-    }
-    else if (selectJustifyContent.value === "center") {
-        main.style.justifyContent = "center"
-    }
-    else if (selectJustifyContent.value === "spaceAround") {
-        main.style.justifyContent = "space-around"
-    }
-    else if (selectJustifyContent.value === "spaceEvenly") {
-        main.style.justifyContent = "space-evenly"
-    }
-    else {
-        main.style.justifyContent = "space-between"
+    for(let i = 0; i < options.length; i++){
+        if (selectJustifyContent.value === options[i].value) {
+            main.style.justifyContent = options[i].value
+        }
     }
 })
 
 // Permet de choisir l'Align-items
 selectAlignItems.addEventListener("change", () => {
-    if (selectAlignItems.value === "start") {
-        main.style.alignItems = "start"
-    }
-    else if (selectAlignItems.value === "end") {
-        main.style.alignItems = "end"
-    }
-    else {
-        main.style.alignItems = "center"
+    for(let i = 0; i < options.length; i++){
+        if (selectAlignItems.value === options[i].value) {
+            main.style.alignItems = options[i].value
+        }
     }
 })
 
 // Permet de choisir le Flew Wrap
 selectflexWrap.addEventListener("change", () => {
-    if (selectflexWrap.value === "wrap") {
-        main.style.flexWrap = "wrap"
-    }
-    else if (selectflexWrap.value === "noWrap") {
-        main.style.flexWrap = "nowrap"
-    }
-    else {
-        main.style.flexWrap = "wrap-reverse"
+    for(let i = 0; i < options.length; i++){
+        if (selectflexWrap.value === options[i].value) {
+            main.style.flexWrap = options[i].value
+        }
     }
 })
 
@@ -168,9 +123,8 @@ btnAjout.addEventListener("click", () => {
     const element = document.createElement("div")
     const elements = document.querySelectorAll(".element")
     element.classList.add("element")
-    element.innerText = elements.length
+    element.innerText = elements.length +1
     main.appendChild(element)
-    
 })
 
 // Permet de supprimer un élément du conteneur
@@ -193,7 +147,6 @@ btnReset.addEventListener("click", () => {
         containerTemplateColumns.style.display = "none"
         containerTemplateRows.style.display = "none"
     }
-    
     main.style.flexDirection = "row"
     selectFlexDirection.value = "row"
     main.style.justifyContent = "start"
@@ -207,7 +160,6 @@ btnReset.addEventListener("click", () => {
     while(main.children.length > 1) {
         main.removeChild(main.lastChild)
     }
-    i = 2
 })
 
 // Permet de choisir le grid-template-columns
@@ -219,4 +171,3 @@ zoneTemplateColumns.addEventListener("change", () => {
 zoneTemplateRows.addEventListener("change", () => {
     main.style.gridTemplateRows = zoneTemplateRows.value
 })
-
