@@ -12,8 +12,6 @@ const containerGap = document.querySelector("#containerGap")
 const btnAjout = document.querySelector("#btnAjout")
 const btnSuppr = document.querySelector("#btnSuppr")
 const btnReset = document.querySelector("#btnReset")
-const containerWidth = document.querySelector("#containerWidth")
-const containerHeight = document.querySelector("#containerHeight")
 const btnDarkLight = document.querySelector("#btnDarkLight")
 
 const selectDisplay = document.querySelector("#selectDisplay")
@@ -25,10 +23,23 @@ const zoneTemplateColumns = document.querySelector("#inputTemplateColumns")
 const zoneTemplateRows = document.querySelector("#inputTemplateRows")
 const zoneTailleGap = document.querySelector("#inputTailleGap")
 const selectFormatGap = document.querySelector("#selectFormatGap")
-const inputWidth = document.querySelector("#inputWidth")
-const selectFormatWidth = document.querySelector("#selectFormatWidth")
-const inputHeight = document.querySelector("#inputHeight")
-const selectFormatHeight = document.querySelector("#selectFormatHeight")
+
+
+const options = document.querySelectorAll("option")
+let valeur = []
+for(let i = 0; i < options.length; i++) {
+    valeur[i] = options[i]
+}
+
+// A CONTINUER !!
+// const selectCorrespond = (select) => {
+//     for(let i = 0; i < options.length; i++) {
+//         if select = valeur[i].value {
+
+//         }
+//     }
+// }
+
 
 // Si choix du thème en mémoire, l'exécute 
 let themeEnregistre = localStorage.getItem("theme")
@@ -153,21 +164,19 @@ selectFormatGap.addEventListener("change", () => {
 })
 
 // Permet de créer un élément dans le conteneur
-let i = 2
-
 btnAjout.addEventListener("click", () => {
     const element = document.createElement("div")
+    const elements = document.querySelectorAll(".element")
     element.classList.add("element")
-    element.innerText = i
+    element.innerText = elements.length
     main.appendChild(element)
-    i++
+    
 })
 
 // Permet de supprimer un élément du conteneur
 btnSuppr.addEventListener("click", () => {
     if(main.children.length > 1) {
         main.removeChild(main.lastChild)
-        i--
     }
 })
 
